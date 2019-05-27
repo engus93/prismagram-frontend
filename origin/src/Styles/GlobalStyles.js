@@ -6,4 +6,11 @@ export default createGlobalStyle`
     * {
         box-sizing:border-box;
     }
+    body {
+        background-color: ${props => props.theme.bgColor}
+    }
+    a{
+        color:${props => props.theme.blueColor};
+        text-decoration: none;
+    }
 `;
