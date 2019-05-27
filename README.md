@@ -2,15 +2,15 @@
 
 styled-reset prop-types react-helmet
 
-- apollo-boost
-- graphql
 - react
-- react-apollo-hooks
 - react-dom
-- react-helmet
 - react-router-dom
 - react-scripts
-- styled-components
+- graphql
+- apollo-boost
+- react-apollo-hooks
 - prop-types
+- react-helmet
 - react-toastify
 - styled-reset
+- styled-components
