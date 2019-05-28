@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import { gql } from "apollo-boost";
 import Input from "./Input";
-import { InstaLogo, Compass, HeartEmpty, User } from "./Icons";
+import { Logo, Compass, HeartEmpty, User } from "./Icons";
 import useInput from "../Hooks/useInput";
 import { useQuery } from "react-apollo-hooks";
 
@@ -73,7 +73,6 @@ const ME = gql`
 export default withRouter(({ history }) => {
   const search = useInput("");
   const { data } = useQuery(ME);
-  console.log(data.me);
   const onSearchSubmit = event => {
     event.preventDefault();
     history.push(`/search?term=${search.value}`);
@@ -85,7 +84,7 @@ export default withRouter(({ history }) => {
         {/* Logo */}
         <HeaderColumn>
           <Link to="/">
-            <InstaLogo />
+            <Logo />
           </Link>
         </HeaderColumn>
         {/* Search Bar */}
