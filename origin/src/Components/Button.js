@@ -16,7 +16,7 @@ const Container = styled.button`
 
 const Button = ({ text }) => <Container>{text}</Container>;
 
-Button.prototype = {
+Button.propTypes = {
   text: PropTypes.string.isRequired
 };
 
