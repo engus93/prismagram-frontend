@@ -27,6 +27,7 @@ export default () => {
   } = useQuery(QUERY);
 
   return (
+    // props.theme 테마 설정 Context로 사용가능
     <ThemeProvider theme={Theme}>
       {/* div랑 같은 뜻 */}
       <Wrapper>
