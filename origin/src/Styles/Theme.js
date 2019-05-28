@@ -3,6 +3,7 @@ const BORDER_RADIUS = "border-radius: 4px;";
 
 // Theme CSS Virabkes
 export default {
+  maxWidth: "935px",
   bgColor: "#FAFAFA",
   blackColor: "#262626",
   blueColor: "#3897f0",
