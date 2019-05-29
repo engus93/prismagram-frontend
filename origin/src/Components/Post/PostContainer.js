@@ -67,6 +67,18 @@ const PostContainer = ({
     }
   };
 
+  const onKeyPress = event => {
+    const { keyCode } = event;
+    if (keyCode === 13) {
+      try {
+        addCommentMutaion();
+        comment.setValue("");
+      } catch {
+        toast.Error("Can't add comment");
+      }
+    }
+  };
+
   return (
     <PostPresenter
       user={user}
@@ -82,6 +94,7 @@ const PostContainer = ({
       setLikeCount={setLikeCount}
       currentItem={currentItem}
       toggleLike={toggleLike}
+      onKeyPress={onKeyPress}
     />
   );
 };
