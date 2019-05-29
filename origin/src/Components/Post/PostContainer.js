@@ -49,6 +49,7 @@ const PostContainer = ({
 
   useEffect(() => {
     slide();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentItem]);
 
   const toggleLike = async () => {
