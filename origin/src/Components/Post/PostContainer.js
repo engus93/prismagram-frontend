@@ -21,6 +21,7 @@ const PostContainer = ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);
+  const [selfComments, setSelfComments] = useState([]);
   const comment = useInput("");
 
   // Query
@@ -67,14 +68,20 @@ const PostContainer = ({
     }
   };
 
-  const onKeyPress = event => {
-    const { keyCode } = event;
-    if (keyCode === 13) {
-      try {
-        addCommentMutaion();
-        comment.setValue("");
-      } catch {
-        toast.Error("Can't add comment");
+  const onKeyPress = async event => {
+    const { which } = event;
+    if (which === 13) {
+      event.preventDefault();
+      if (comment.value !== "") {
+        try {
+          const {
+            data: { addComment }
+          } = await addCommentMutaion();
+          setSelfComments([...selfComments, addComment]);
+          comment.setValue("");
+        } catch {
+          toast.error("Can't add comment");
+        }
       }
     }
   };
@@ -95,6 +102,7 @@ const PostContainer = ({
       currentItem={currentItem}
       toggleLike={toggleLike}
       onKeyPress={onKeyPress}
+      selfComments={selfComments}
     />
   );
 };

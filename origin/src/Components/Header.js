@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
-import { gql } from "apollo-boost";
 import Input from "./Input";
+import { gql } from "apollo-boost";
 import { Logo, Compass, HeartEmpty, User } from "./Icons";
 import useInput from "../Hooks/useInput";
 import { useQuery } from "react-apollo-hooks";
@@ -63,7 +63,7 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-const ME = gql`
+export const ME = gql`
   {
     me {
       username
