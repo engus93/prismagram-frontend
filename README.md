@@ -14,3 +14,4 @@ styled-reset prop-types react-helmet
 - react-toastify
 - styled-reset
 - styled-components
+- react-autosize-textarea

@@ -17,5 +17,7 @@ export default {
     ${BOX_BORDER};
     ${BORDER_RADIUS};
     background-color: white;
-  `
+  `,
+  fontStyle:
+    "font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;"
 };

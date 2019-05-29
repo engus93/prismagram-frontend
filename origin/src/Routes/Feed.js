@@ -39,7 +39,6 @@ const FEED_QUERY = gql`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 80vh;
 `;
