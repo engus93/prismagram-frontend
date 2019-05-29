@@ -9,7 +9,9 @@ const Post = styled.div`
   ${props => props.theme.whiteBox};
   width: 100%;
   max-width: 600px;
+  user-select: none;
   margin-bottom: 25px;
+  user-select: none;
 `;
 
 const Header = styled.header`
@@ -43,7 +45,7 @@ const File = styled.div`
   height: 600px;
   position: absolute;
   top: 0;
-  background-image: url(${props => props.src}});
+  background-image: url(${props => props.src});
   background-size: cover;
   background-position: center;
   opacity: ${props => (props.showing ? 1 : 0)};
@@ -89,9 +91,6 @@ const Textarea = styled(TextareaAutosize)`
   ${props => props.theme.fontStyle};
 `;
 
-const defaultProfile =
-  "https://newsimg.sedaily.com/2019/05/23/1VJ94UG1RX_1.png";
-
 export default ({
   user: { avatar, username },
   location,
@@ -100,11 +99,12 @@ export default ({
   likeCount,
   createdAt,
   newComment,
-  currentItem
+  currentItem,
+  toggleLike
 }) => (
   <Post>
     <Header>
-      <Avatar size="sm" url={avatar ? avatar : defaultProfile} />
+      <Avatar size="sm" url={avatar} />
       <UserColumn>
         <FatText text={username} />
         <Location>{location}</Location>
@@ -113,17 +113,14 @@ export default ({
     <Files>
       {files &&
         files.map((file, index) => (
-          <File
-            key={file.id}
-            id={file.id}
-            src={file.url}
-            showing={index === currentItem}
-          />
+          <File key={file.id} src={file.url} showing={index === currentItem} />
         ))}
     </Files>
     <Meta>
       <Buttons>
-        <Button>{isLiked ? <HeartFull /> : <HeartEmpty />}</Button>
+        <Button onClick={toggleLike}>
+          {isLiked ? <HeartFull /> : <HeartEmpty />}
+        </Button>
         <Button>
           <Comment />
         </Button>
