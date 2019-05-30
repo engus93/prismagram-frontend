@@ -1,8 +1,10 @@
 import React from "react";
+import Helmet from "react-helmet";
 import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../Components/Loader";
+import Post from "../Components/Post";
 
 const FEED_QUERY = gql`
   {
@@ -37,13 +39,35 @@ const FEED_QUERY = gql`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 80vh;
 `;
 
 export default () => {
   const { data, loading } = useQuery(FEED_QUERY);
-  console.log(data, loading);
-  return <Wrapper>{loading && <Loader />}</Wrapper>;
+  return (
+    <Wrapper>
+      <Helmet>
+        <title>Feed | Prismagram</title>
+      </Helmet>
+      {loading && <Loader />}
+      {!loading &&
+        data &&
+        data.seeFeed &&
+        data.seeFeed.map(post => (
+          <Post
+            key={post.id}
+            id={post.id}
+            user={post.user}
+            files={post.files}
+            caption={post.caption}
+            location={post.location}
+            isLiked={post.isLiked}
+            likeCount={post.likeCount}
+            comments={post.comments}
+            createdAt={post.createdAt}
+          />
+        ))}
+    </Wrapper>
+  );
 };
