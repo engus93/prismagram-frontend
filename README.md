@@ -62,14 +62,6 @@ yarn add apollo-boost
 
 > `Apllp Client`를 설정하는데 필요한 것들이 들어있는 패키지이다.
 
-### prop-types
-
-```bash
-yarn add prop-types
-```
-
-> `PropTypes`를 사용할 수 있도록 도와준다.
-
 ### react-helmet
 
 ```bash
@@ -93,6 +85,14 @@ yarn add styled-reset
 ```
 
 > `styled-reset`는 전역으로 스타일을 선언할 수 있게 해준다.
+
+### prop-types
+
+```bash
+yarn add prop-types
+```
+
+> `PropTypes`를 사용할 수 있도록 도와준다.
 
 ### react-autosize-textarea
 
