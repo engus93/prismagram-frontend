@@ -78,7 +78,7 @@ export default ({
         )}
         {action === "confirm" && (
           <form onSubmit={onSubmit}>
-            <Input placeholder={"Username"} {...secret} />
+            <Input placeholder={"Paste your secret"} {...secret} />
             <Button text={"Confirm"} />
           </form>
         )}

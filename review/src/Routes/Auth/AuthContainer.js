@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import AuthPresenter from "./AuthPresenter";
 import useInput from "../../Hooks/useInput";
 import { useMutation } from "react-apollo-hooks";
-import { LOG_IN, CREATE_ACCOUNT, LOCAL_LOG_IN } from "./AuthQueries";
+import {
+  LOG_IN,
+  CREATE_ACCOUNT,
+  LOCAL_LOG_IN,
+  CONFIRM_SECRET
+} from "./AuthQueries";
 import { toast } from "react-toastify";
 
 export default () => {
@@ -85,7 +90,7 @@ export default () => {
           const {
             data: { confirmSecret: token }
           } = await confirmSecretMutation();
-          if (teken !== "" && token !== undefined) {
+          if (token !== "" && token !== undefined) {
             localLogInMutation({ variables: { token } });
           } else {
             throw Error();
