@@ -1,6 +1,6 @@
 // Logged Check Query
 export const defaults = {
-  isLoggedIn: localStorage.getItem("token") !== null ? true : false
+  isLoggedIn: Boolean(localStorage.getItem("token")) || false
 };
 
 // Log In and Out Resolver
@@ -15,7 +15,7 @@ export const resolvers = {
       });
       return null;
     },
-    logUserOut: (_, __, { cache }) => {
+    logUserOut: () => {
       localStorage.removeItem("token");
       window.location.reload();
       return null;
