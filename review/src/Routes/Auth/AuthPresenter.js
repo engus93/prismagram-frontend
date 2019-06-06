@@ -55,17 +55,19 @@ export default ({
   firstName,
   lastName,
   email,
+  secret,
   onSubmit
 }) => {
   return (
     <Wrapper>
       <Form>
-        {action === "logIn" ? (
+        {action === "logIn" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type="email" />
             <Button text={"Log in"} />
           </form>
-        ) : (
+        )}
+        {action === "signUp" && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"First name"} {...firstName} />
             <Input placeholder={"Last name"} {...lastName} />
@@ -74,12 +76,18 @@ export default ({
             <Button text={"Sign up"} />
           </form>
         )}
+        {action === "confirm" && (
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"Username"} {...secret} />
+            <Button text={"Confirm"} />
+          </form>
+        )}
       </Form>
       <StateChanger>
         {action === "logIn" ? (
           <>
             Don't have an account?{" "}
-            <Link onClick={() => setAction("SignUp")}>Sign Up</Link>
+            <Link onClick={() => setAction("signUp")}>Sign Up</Link>
           </>
         ) : (
           <>
