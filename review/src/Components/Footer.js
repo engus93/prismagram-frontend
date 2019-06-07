@@ -1,6 +1,8 @@
+// Modules ----------------------------------------------------------------------------
 import React from "react";
 import styled from "styled-components";
 
+// Styled Components ------------------------------------------------------------------
 const Footer = styled.footer`
   display: flex;
   justify-content: space-between;
@@ -8,6 +10,7 @@ const Footer = styled.footer`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
+  margin: 50px 50px;
 `;
 
 const List = styled.ul`
@@ -29,6 +32,7 @@ const Copyright = styled.span`
 `;
 
 export default () => (
+  // Reder ---------------------------------------------------------------------------
   <Footer>
     <List>
       <ListItem>
