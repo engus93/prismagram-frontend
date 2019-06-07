@@ -9,7 +9,9 @@ const Text = styled.span`
 `;
 
 // Render
-const FatText = ({ text }) => <Text>{text}</Text>;
+const FatText = ({ text, className }) => (
+  <Text className={className}>{text}</Text>
+);
 
 // PropTypes Structure
 FatText.propTypes = {

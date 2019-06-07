@@ -54,6 +54,16 @@ const PostContainer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentItem]);
 
+  // Add Comment Event
+  const onKeyPress = event => {
+    const { keyCode } = event;
+    if (keyCode === 13) {
+      comment.setValue("");
+      // addCommentMutation();
+    }
+    return;
+  };
+
   /* Function */
 
   // toggleLike
@@ -84,6 +94,7 @@ const PostContainer = ({
       setLikeCount={setLikeCount}
       currentItem={currentItem}
       toggleLike={toggleLike}
+      onKeyPress={onKeyPress}
     />
   );
 };
