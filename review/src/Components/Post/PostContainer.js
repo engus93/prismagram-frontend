@@ -1,5 +1,6 @@
 // Modules
 import React, { useEffect } from "react";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 
 // My Files List
@@ -25,6 +26,7 @@ const PostContainer = ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);
+  const [selfComments, setSelfComments] = useState([]);
 
   // Hooks
   const comment = useInput("");
@@ -55,13 +57,20 @@ const PostContainer = ({
   }, [currentItem]);
 
   // Add Comment Event
-  const onKeyPress = event => {
-    const { keyCode } = event;
-    if (keyCode === 13) {
-      comment.setValue("");
-      // addCommentMutation();
+  const onKeyPress = async event => {
+    const { which } = event;
+    if (which === 13) {
+      event.preventDefault();
+      try {
+        const {
+          data: { addComment }
+        } = await addCommentMutation();
+        setSelfComments([...selfComments, addComment]);
+        comment.setValue("");
+      } catch {
+        toast.error("Can't send comment");
+      }
     }
-    return;
   };
 
   /* Function */
@@ -95,6 +104,7 @@ const PostContainer = ({
       currentItem={currentItem}
       toggleLike={toggleLike}
       onKeyPress={onKeyPress}
+      selfComments={selfComments}
     />
   );
 };
