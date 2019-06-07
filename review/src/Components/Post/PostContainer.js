@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 // My Files List
 import useInput from "../../Hooks/useInput";
 import PostPresenter from "./PostPresenter";
+import { useState } from "react";
 
 // Render
 const PostContainer = ({
@@ -14,9 +15,33 @@ const PostContainer = ({
   likeCount,
   isLiked,
   comments,
-  createdAt
+  createdAt,
+  caption,
+  location
 }) => {
-  return <PostPresenter />;
+  // useState
+  const [isLikedS, setIsLiked] = useState(isLiked);
+  const [likeCountS, setLikeCount] = useState(likeCount);
+
+  // Hooks
+  const comment = useInput("");
+
+  // Context
+  return (
+    <PostPresenter
+      user={user}
+      files={files}
+      likeCount={likeCountS}
+      location={location}
+      caption={caption}
+      isLiked={isLikedS}
+      comments={comments}
+      createdAt={createdAt}
+      newComment={comment}
+      setIsLiked={setIsLiked}
+      setLikeCount={setLikeCount}
+    />
+  );
 };
 
 // PropTypes Structure
@@ -45,7 +70,9 @@ PostContainer.propTypes = {
       }).isRequired
     })
   ).isRequired,
-  createdAt: PropTypes.string
+  caption: PropTypes.string.isRequired,
+  location: PropTypes.string,
+  createdAt: PropTypes.string.isRequired
 };
 
 export default PostContainer;
