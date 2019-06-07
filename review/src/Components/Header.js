@@ -80,9 +80,9 @@ const ME = gql`
 export default withRouter(({ history }) => {
   // Hooks ---------------------------------------------------------------------------
   const search = useInput("");
-  const meQuery = useQuery(ME);
+  const { data } = useQuery(ME);
 
-  console.log(meQuery);
+  console.log(data);
 
   // Evnets --------------------------------------------------------------------------
 
@@ -115,9 +115,15 @@ export default withRouter(({ history }) => {
           <HeaderLink to="/notifications">
             <HeartEmpty />
           </HeaderLink>
-          <HeaderLink to="/username">
-            <User />
-          </HeaderLink>
+          {data.me ? (
+            <HeaderLink to={data.me.username}>
+              <User />
+            </HeaderLink>
+          ) : (
+            <HeaderLink to="/#">
+              <User />
+            </HeaderLink>
+          )}
         </HeaderColumn>
       </HeaderWrapper>
     </Header>
