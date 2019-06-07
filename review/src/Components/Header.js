@@ -1,10 +1,16 @@
+// Modules ----------------------------------------------------------------------------
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { gql } from "apollo-boost";
+import { useQuery } from "react-apollo-hooks";
+
+// My files ---------------------------------------------------------------------------
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
 import { Compass, HeartEmpty, User, Logo } from "./Icons";
 
+// Styled Components ------------------------------------------------------------------
 const Header = styled.header`
   width: 100%;
   border: 0;
@@ -60,8 +66,35 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-export default () => {
+// Queries ---------------------------------------------------------------------------
+
+// 내 프로필 정보
+const ME = gql`
+  {
+    me {
+      username
+    }
+  }
+`;
+
+export default withRouter(({ history }) => {
+  // Hooks ---------------------------------------------------------------------------
   const search = useInput("");
+  const meQuery = useQuery(ME);
+
+  console.log(meQuery);
+
+  // Evnets --------------------------------------------------------------------------
+
+  // 검색 히스토리 푸시 이벤트
+  const onSearchSubmit = event => {
+    event.preventDefault();
+    if (search !== "") {
+      history.push(`/search?term=${search.value}`);
+    }
+  };
+
+  // Reder ---------------------------------------------------------------------------
   return (
     <Header>
       <HeaderWrapper>
@@ -71,7 +104,7 @@ export default () => {
           </Link>
         </HeaderColumn>
         <HeaderColumn>
-          <form>
+          <form onSubmit={onSearchSubmit}>
             <SearchInput {...search} placeholder="Search" />
           </form>
         </HeaderColumn>
@@ -89,4 +122,4 @@ export default () => {
       </HeaderWrapper>
     </Header>
   );
-};
+});
