@@ -1,5 +1,5 @@
 // Modules
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // My Files List
@@ -22,9 +22,25 @@ const PostContainer = ({
   // useState
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
+  const [currentItem, setCurrentItem] = useState(0);
 
   // Hooks
   const comment = useInput("");
+
+  // Event
+  const slide = () => {
+    const totalFiles = files.length;
+    if (currentItem === totalFiles - 1) {
+      setTimeout(() => setCurrentItem(0), 3000);
+    } else {
+      setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+    }
+  };
+
+  useEffect(() => {
+    slide();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentItem]);
 
   // Context
   return (
@@ -40,6 +56,7 @@ const PostContainer = ({
       newComment={comment}
       setIsLiked={setIsLiked}
       setLikeCount={setLikeCount}
+      currentItem={currentItem}
     />
   );
 };
