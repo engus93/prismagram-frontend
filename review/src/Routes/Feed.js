@@ -1,9 +1,14 @@
+// Modules --------------------------------------------------------------------------
 import React from "react";
 import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
-import Loader from "../Components/Loader";
 
+// My Files List --------------------------------------------------------------------
+import Loader from "../Components/Loader";
+import Post from "../Components/Post";
+
+// Queries
 const FEED_QUERY = gql`
   {
     seeFeed {
@@ -34,6 +39,7 @@ const FEED_QUERY = gql`
   }
 `;
 
+// Styled Component
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,6 +48,28 @@ const Wrapper = styled.div`
 `;
 
 export default () => {
+  // Apollo
   const { data, loading } = useQuery(FEED_QUERY);
-  return <Wrapper>{loading && <Loader />}</Wrapper>;
+
+  // Render
+  return (
+    <Wrapper>
+      {loading && <Loader />}
+      {!loading &&
+        data &&
+        data.seeFeed &&
+        data.seeFeed.map(post => (
+          <Post
+            key={post.id}
+            id={post.id}
+            user={post.user}
+            files={post.files}
+            likeCount={post.likeCount}
+            isLiked={post.isLiked}
+            comments={post.comments}
+            createdAt={post.createdAt}
+          />
+        ))}
+    </Wrapper>
+  );
 };

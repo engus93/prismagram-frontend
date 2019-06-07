@@ -1,8 +1,8 @@
-// Modules ----------------------------------------------------------------------------
+// Modules
 import React from "react";
 import styled from "styled-components";
 
-// Styled Components ------------------------------------------------------------------
+// Styled Components
 const Footer = styled.footer`
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,7 @@ const Copyright = styled.span`
 `;
 
 export default () => (
-  // Reder ---------------------------------------------------------------------------
+  // Reder
   <Footer>
     <List>
       <ListItem>

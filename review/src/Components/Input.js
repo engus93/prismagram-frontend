@@ -1,7 +1,9 @@
+// Modules
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+// Styled Component
 const Container = styled.input`
   border: 0;
   border: ${props => props.theme.boxBorder};
@@ -12,6 +14,7 @@ const Container = styled.input`
   padding: 0px 15px;
 `;
 
+// Render
 const Input = ({
   placeholder,
   required = true,
@@ -29,6 +32,8 @@ const Input = ({
     type={type}
   />
 );
+
+// Proptypes Structure
 Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   required: PropTypes.bool,

@@ -1,5 +1,8 @@
+// Modules
 import React from "react";
 import styled, { keyframes } from "styled-components";
+
+// My Files List
 import { Logo } from "./Icons";
 
 const Animation = keyframes`
@@ -15,10 +18,12 @@ const Animation = keyframes`
     }
 `;
 
+// Styled Component
 const Loader = styled.div`
   animation: ${Animation} 1s linear infinite;
 `;
 
+// Render
 export default () => (
   <Loader>
     <Logo size={36} />

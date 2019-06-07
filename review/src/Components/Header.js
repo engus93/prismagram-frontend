@@ -1,16 +1,16 @@
-// Modules ----------------------------------------------------------------------------
+// Modules
 import React from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 
-// My files ---------------------------------------------------------------------------
+// My files
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
 import { Compass, HeartEmpty, User, Logo } from "./Icons";
 
-// Styled Components ------------------------------------------------------------------
+// Styled Components
 const Header = styled.header`
   width: 100%;
   border: 0;
@@ -66,7 +66,7 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-// Queries ---------------------------------------------------------------------------
+// Queries
 
 // 내 프로필 정보
 const ME = gql`
@@ -78,15 +78,13 @@ const ME = gql`
 `;
 
 export default withRouter(({ history }) => {
-  // Hooks ---------------------------------------------------------------------------
+  // Hooks
   const search = useInput("");
   const { data } = useQuery(ME);
 
-  console.log(data);
+  // Evnets
 
-  // Evnets --------------------------------------------------------------------------
-
-  // 검색 히스토리 푸시 이벤트
+  // Search History Push Event
   const onSearchSubmit = event => {
     event.preventDefault();
     if (search !== "") {
@@ -94,7 +92,7 @@ export default withRouter(({ history }) => {
     }
   };
 
-  // Reder ---------------------------------------------------------------------------
+  // Reder
   return (
     <Header>
       <HeaderWrapper>

@@ -1,6 +1,5 @@
+// Modules
 import React, { useState } from "react";
-import AuthPresenter from "./AuthPresenter";
-import useInput from "../../Hooks/useInput";
 import { useMutation } from "react-apollo-hooks";
 import {
   LOG_IN,
@@ -10,6 +9,10 @@ import {
 } from "./AuthQueries";
 import { toast } from "react-toastify";
 
+// My Files List
+import AuthPresenter from "./AuthPresenter";
+import useInput from "../../Hooks/useInput";
+
 export default () => {
   const [action, setAction] = useState("logIn");
   const username = useInput("");
@@ -18,10 +21,9 @@ export default () => {
   const secret = useInput("");
   const email = useInput("");
 
-  const requestSecretMutation = useMutation(LOG_IN, {
-    variables: { email: email.value }
-  });
+  /* Mutation */
 
+  // Create Account
   const createAccountMutation = useMutation(CREATE_ACCOUNT, {
     variables: {
       email: email.value,
@@ -31,6 +33,12 @@ export default () => {
     }
   });
 
+  // Check email
+  const requestSecretMutation = useMutation(LOG_IN, {
+    variables: { email: email.value }
+  });
+
+  // Check Secret
   const confirmSecretMutation = useMutation(CONFIRM_SECRET, {
     variables: {
       email: email.value,
@@ -38,8 +46,12 @@ export default () => {
     }
   });
 
+  // Get Token
   const localLogInMutation = useMutation(LOCAL_LOG_IN);
 
+  /* Event */
+
+  // Form Submit Event
   const onSubmit = async event => {
     event.preventDefault();
     if (action === "logIn") {
@@ -102,6 +114,7 @@ export default () => {
     }
   };
 
+  // Render
   return (
     <AuthPresenter
       action={action}

@@ -1,8 +1,12 @@
+// Modules
 import React from "react";
 import styled from "styled-components";
+
+// My Files List
 import Input from "./../../Components/Input";
 import Button from "./../../Components/Button";
 
+// Styled Component
 const Wrapper = styled.div`
   min-height: 80vh;
   display: flex;
@@ -18,7 +22,6 @@ const Box = styled.div`
   max-width: 350px;
 `;
 
-// Box extend
 const StateChanger = styled(Box)`
   text-align: center;
   padding: 20px 0px;
@@ -47,6 +50,7 @@ const Form = styled(Box)`
   }
 `;
 
+// Render
 export default ({
   action,
   setAction,
