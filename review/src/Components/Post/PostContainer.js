@@ -51,6 +51,10 @@ const PostContainer = ({
       setTimeout(() => setCurrentItem(currentItem + 1), 3000);
     }
   };
+
+  // LifeCycle
+
+  // Image Slide Function
   useEffect(() => {
     slide();
     // eslint-disable-next-line react-hooks/exhaustive-deps

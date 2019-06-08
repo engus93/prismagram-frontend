@@ -21,8 +21,6 @@ export default withRouter(({ location: { search } }) => {
     }
   });
 
-  console.log(data);
-
   // Render
   return <SearchPresenter searchingTerm={term} loading={loading} data={data} />;
 });
