@@ -1,7 +1,9 @@
+// Modules
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
+// Styled Component
 const Container = styled.button`
   width: 100%;
   border: 0;
@@ -15,10 +17,12 @@ const Container = styled.button`
   cursor: pointer;
 `;
 
+// Render
 const Button = ({ text, onClick }) => (
   <Container onClick={onClick}>{text}</Container>
 );
 
+// PropTypes Structure
 Button.propTypes = {
   text: PropTypes.string.isRequired
 };

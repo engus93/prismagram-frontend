@@ -30,12 +30,11 @@ const ELink = styled(Link)`
 // Render
 const UserCard = ({ id, username, isFollowing, url, isSelf }) => (
   <Card>
-    <EAvatar url={url}>
-      <ELink to={`/${username}`}>
-        <FatText text={username} />
-      </ELink>
-      {!isSelf && <Button text={isFollowing ? "Unfollow" : "Follow"} />}
-    </EAvatar>
+    <EAvatar url={url} />
+    <ELink to={`/${username}`}>
+      <FatText text={username} />
+    </ELink>
+    {!isSelf && <Button text={isFollowing ? "Unfollow" : "Follow"} />}
   </Card>
 );
 
