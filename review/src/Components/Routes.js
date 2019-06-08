@@ -1,6 +1,6 @@
 // Modules
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // My Files List
@@ -17,6 +17,8 @@ const LoggedInRoutes = () => (
     <Route path="/search" component={Search} />
     <Route path="/explore" component={Explore} />
     <Route path="/:username" component={Profile} />
+    {/* Route에 해당이 안되면 not found로 처리해서 home으로 redierct */}
+    <Redirect from="*" to="/" />
   </Switch>
 );
 
@@ -24,6 +26,7 @@ const LoggedInRoutes = () => (
 const LoggedOutRoutes = () => (
   <Switch>
     <Route exact path="/" component={Auth} />
+    <Redirect from="*" to="/" />
   </Switch>
 );
 
