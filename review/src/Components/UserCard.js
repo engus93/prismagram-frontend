@@ -28,7 +28,7 @@ const ELink = styled(Link)`
 `;
 
 // Render
-const UserCard = ({ username, isFollowing, url, isSelf }) => (
+const UserCard = ({ id, username, isFollowing, url, isSelf }) => (
   <Card>
     <EAvatar url={url}>
       <ELink to={`/${username}`}>
@@ -41,6 +41,7 @@ const UserCard = ({ username, isFollowing, url, isSelf }) => (
 
 // PropTypes Structure
 UserCard.propTypes = {
+  id: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   isFollowing: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
